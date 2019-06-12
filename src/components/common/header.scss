@@ -1,0 +1,9 @@
+li {
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+      color: blue;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+}

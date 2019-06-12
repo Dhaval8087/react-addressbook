@@ -1,0 +1,26 @@
+.icon {
+  cursor: pointer;
+}
+.table-grid {
+  th {
+    position: sticky;
+    height: 47px;
+    vertical-align: middle;
+    background-color: #11323b;
+    color: #ffff;
+    top: 0;
+    box-shadow: 1px 1px #d3d3d4;
+  }
+  tr {
+    &.lead:hover {
+        background-color: #edf8fb;
+        cursor: pointer;
+      }
+  }
+}
+.my-custom-scrollbar {
+  height: 600px;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
