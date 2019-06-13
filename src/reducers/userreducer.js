@@ -3,7 +3,7 @@ import { GET_USER_LIST, ISLOADING, SEARCH_USER, SET_NAT, SET_PAGE } from '../con
 const getInitialState = () => ({
     users: [],
     isLoading: false,
-    page: 1,
+    page: 0,
     filterUser: [],
     nat: 'US'
 });
@@ -19,7 +19,7 @@ const userReducer = (state = getInitialState(), action) => {
             const filterUser = state.filterUser.filter(p => p.name.first.toLowerCase().indexOf(action.searchString.toLowerCase()) > -1);
             return { ...state, users: filterUser.length > 0 ? filterUser : state.users };
         case SET_NAT:
-            return { ...state, nat: action.nat };
+            return { ...state, nat: action.nat, page: 0 };
         default:
             return state;
     }

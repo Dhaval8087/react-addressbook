@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { Col, Container, Input, InputGroup, InputGroupAddon, Row } from 'reactstrap';
 import { bindActionCreators } from 'redux';
 
-import { filterUsers, getUsers, setPage } from '../../actions/useractions';
+import { filterUsers, getUsers, setCurrentPage } from '../../actions/useractions';
 import AppContainer from '../common/appcontainer';
 import UserDetails from './userdetails';
 
@@ -22,7 +22,7 @@ export class UserList extends Component {
     this.tableRef = React.createRef();
   }
   componentDidMount() {
-    this.props.getUsers(this.props.page, this.props.nat);
+    this.loadUsers();
     if (this.tableRef && this.tableRef.current) {
       this.tableRef.current.addEventListener('scroll', () => {
         if (
@@ -36,8 +36,9 @@ export class UserList extends Component {
   }
   loadUsers() {
     if (this.props) {
-      this.props.setPage(this.props.page + 1);
-      this.props.getUsers(this.props.page);
+      const currentPage = this.props.page + 1;
+      this.props.setCurrentPage(currentPage);
+      this.props.getUsers(currentPage, this.props.nat);
     }
   }
   loadDetails = event => {
@@ -162,7 +163,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getUsers: bindActionCreators(getUsers, dispatch),
-    setPage: bindActionCreators(setPage, dispatch),
+    setCurrentPage: bindActionCreators(setCurrentPage, dispatch),
     filterUsers: bindActionCreators(filterUsers, dispatch)
   };
 };

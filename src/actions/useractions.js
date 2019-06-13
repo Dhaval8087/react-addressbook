@@ -46,4 +46,9 @@ export const getUsers = (page,nat) => {
             });
     }
 }
+export const setCurrentPage =(page)=>{
+    return (dispatch) => {
+        dispatch(setPage(page));
+    }
+}
 
