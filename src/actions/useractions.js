@@ -39,7 +39,6 @@ export const getUsers = (page,nat) => {
                 else {
                     dispatch(getUserList([]));
                 }
-
             }).catch(error => {
                 toastr.error(error);
                 dispatch(isLoading(false));

@@ -19,7 +19,7 @@ const userReducer = (state = getInitialState(), action) => {
             const filterUser = state.filterUser.filter(p => p.name.first.toLowerCase().indexOf(action.searchString.toLowerCase()) > -1);
             return { ...state, users: filterUser.length > 0 ? filterUser : state.users };
         case SET_NAT:
-            return { ...state, nat: action.nat, page: 0 };
+            return { ...state, nat: action.nat, page: 0, users:[] };
         default:
             return state;
     }
